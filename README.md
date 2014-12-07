@@ -136,7 +136,7 @@ Pour cela, nous allons créer une layout spécifique que nous allons appeler ```
 
 Cette layout n'est rien d'autre que notre layout générale (faites donc un bon copier-coller des familles de votre layout application vers la nouvelle layout map), à laquelle nous retirons la ligne correspondant à l'appel du footer soit ```<%= render "layouts/footer" %>```. Nous pouvons aussi en profiter pour retirer de la layout générale le ```<% yield :map_css %>``` qui sera désormais inutile à cet endroit de notre code.
 
-Maintenant, nous souhaitons dire à notre controller de flats de ne plus appeler la layout app/views/layouts/application.html.erb, mais la layout ```app/views/layouts/map.html.erb``` quand son action **index** est appelée.
+Maintenant, nous souhaitons dire à notre controller de flats de ne plus appeler la layout ```app/views/layouts/application.html.erb```, mais la layout ```app/views/layouts/map.html.erb``` quand son action **index** est appelée.
 
 Pour cela, rendez-vous dans votre controller ```app/controllers/flats_controller.rb```, et ajoutez-y le code suivant :
 
