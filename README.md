@@ -8,7 +8,7 @@ Plaçons-nous (au hasard) dans le contexte d'une carte contenant des appartement
 
 La vue correspondante doit contenir deux ```<div>``` :
 - la carte, donnons-lui l'id **#map**;
-- la liste des appartements, donnons-lui la class **.sidebar**.
+- la liste des appartements, donnons-lui l'id' **#sidebar**.
 
 ```html
 # app/views/flats/index.html.erb
@@ -17,7 +17,7 @@ La vue correspondante doit contenir deux ```<div>``` :
 <div class="box-shadow" id="map"></div>
 
 # la div correspondant à la liste des flats que nous voulons faire défiler
-<div class="sidebar grey-bg">
+<div class="grey-bg" id="sidebar">
   # Il s'agit ici du code correspondant à l'exemple, mais l'important
   # est de placer ici votre contenu à faire défiler
   <h1 class="padding-left-15">List of flats</h1>
@@ -47,7 +47,7 @@ Afin de fixer la carte, donnons-lui les propriétés css ci-dessous, à savoir :
 - ```left: 0;``` ```right: 40%;``` ```width: 40%;``` pour qu'elle soit calée **à gauche** et qu'elle prenne **40%** de la largeur du ```<body>```,
 - ```z-index: 1;``` n'est pas indispensable, mais cette propriété permet de nous assurer que dans le cas où la "responsivité" du site n'est pas optimale et que des ```<div>``` seraient susceptibles de se superposer sur la carte, alors la carte resterait bien au premier plan.
 
-#### Le contenu : **div.sidebar**
+#### Le contenu : **div#sidebar**
 
 Pour que la sidebar soit correctement disposée, donnons-lui les propriétés complémentaires à celles de **#map**, soit une ```width: 60%;```, et ```right: 0;``` pour qu'elle soit bien calée **à droite** qu'elle occupe **60%** de la largeur du ```<body>```.
 Ajoutons-lui maintenant la propriété ```overflow: auto``` qui permet d'ajouter une scrollbar à la div pour pouvoir faire défiler son contenu.
@@ -81,7 +81,7 @@ html, body {
   z-index: 1;
 }
 
-.sidebar {
+#sidebar {
   position: absolute;
   width: 60%;
   top: 50px;
