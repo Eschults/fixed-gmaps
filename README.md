@@ -58,7 +58,7 @@ Ajoutons-lui maintenant la propriété ```overflow: auto``` qui permet de faire 
 Enfin, nous devons empêcher la "scrollbar" du body d'apparaitre, ce qui nous assure que la carte restera bien de marbre en toutes situations.
 
 Pour cela, nous lui ajoutons la propriété ```overflow: hidden```.
-Les autres propriétés appliquées au body ont pour but d'enlever marges et padding, pour occuper la totalité de la page.
+Les autres propriétés appliquées au ```<body>``` ont pour but d'enlever marges et padding, pour occuper la totalité de la page.
 
 Le code est donc le suivant :
 
