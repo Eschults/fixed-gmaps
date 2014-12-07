@@ -128,6 +128,17 @@ Et dans notre vue ```app/views/flats/index.html.erb``` le code suivant :
 
 Ainsi, les propriétés du fichier ```map.css.scss``` ne seront appliquées qu'à cette vue.
 
+Mais pour cela, comme nous n'avons pas fait d'```@import "map";``` dans notre ```application.css.scss``` (toujours pour que ses propriétés ne soient pas appliquées à toutes les pages de notre site), nous devons faire en sorte que ```map.css.scss``` soit chargée au lancement de l'application.
+
+Rendez-vous donc dans votre fichier ```config/initializers/assets.rb``` et ajoutez-y :
+
+```ruby
+#config/initializers/assets.rb
+
+# reste du code
+Rails.application.config.assets.precompile += %w( map.css )
+```
+
 #### Footer
 
 Enfin, si vous avez placé votre footer dans votre layout générale (ce qui est bien sûr la bonne pratique), vous pourriez vouloir vous en affranchir sur cette page spécifique, car il risque d'apparaitre un peu n'importe où maintenant que nous avons donné des ```position: absolute;``` à nos autres ```<div>```.
@@ -149,16 +160,6 @@ class FlatsController < ApplicationController
 
   # reste de votre code
 end
-```
-
-Enfin, comme nous n'avons pas fait d'```@import "map";``` dans notre ```application.css.scss``` (pour ne pas appliquer ses propriétés à toutes les pages de notre site), nous devons faire en sorte que ```map.css.scss``` soit chargée au lancement de l'application.
-Pour cela, rendez-vous dans votre fichier ```config/initializers/assets.rb``` et ajoutez-y :
-
-```ruby
-#config/initializers/assets.rb
-
-# reste du code
-Rails.application.config.assets.precompile += %w( map.css )
 ```
 
 #### Pour aller plus loin
