@@ -151,6 +151,22 @@ class FlatsController < ApplicationController
 end
 ```
 
+Enfin, pour que cette layout soit chargée au lancement de l'application, rendez-vous dans votre fichier ```config/initializers/assets.rb``` et ajoutez-y :
+
+```ruby
+#config/initializers/assets.rb
+
+# reste du code
+Rails.application.config.assets.precompile += %w( map.css )
+```
+
+#### Pour aller plus loin
+
+Maintenant que nous appelons une layout spécifique pour notre page d'index des flats, nous pouvons :
+
+- Retirer le ```<% yield :map_css %>``` de ```app/views/layouts/map.html.erb``` et le ```<% content_for :map_css do %> ... <% end %>``` de ```app/views/flats/index.html.erb``` ;
+- Ajouter dans la ```<head>``` de ```app/views/layouts/map.html.erb``` le ```<%= stylesheet_link_tag 'map' %>```.
+
 ### Sources
 
 - [Stack overflow](http://stackoverflow.com/questions/15147378/position-google-maps-with-sidebar-on-right-and-fixed-header-on-top)
