@@ -8,7 +8,7 @@ Plaçons-nous (au hasard) dans le contexte d'une carte contenant des appartement
 
 La vue correspondante doit contenir deux ```<div>``` :
 - la carte, donnons-lui l'id **#map**;
-- la liste des appartements, donnons-lui l'id' **#sidebar**.
+- la liste des appartements, donnons-lui l'id **#sidebar**.
 
 ```html
 # app/views/flats/index.html.erb
