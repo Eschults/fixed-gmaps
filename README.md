@@ -151,7 +151,8 @@ class FlatsController < ApplicationController
 end
 ```
 
-Enfin, pour que ```map.css.scss``` soit chargée au lancement de l'application, rendez-vous dans votre fichier ```config/initializers/assets.rb``` et ajoutez-y :
+Enfin, comme nous n'avons pas fait d'```@import "map";``` dans notre ```application.css.scss``` (pour ne pas appliquer ses propriétés à toutes les pages de notre site), nous devons faire en sorte que ```map.css.scss``` soit chargée au lancement de l'application.
+Pour cela, rendez-vous dans votre fichier ```config/initializers/assets.rb``` et ajoutez-y :
 
 ```ruby
 #config/initializers/assets.rb
