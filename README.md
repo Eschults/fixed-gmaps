@@ -53,7 +53,7 @@ Afin de fixer la carte, donnons-lui les propriétés css ci-dessous, à savoir :
 Pour que la sidebar soit correctement disposée, donnons-lui les propriétés complémentaires à celles de **#map**, soit une ```width: 60%;```, et ```right: 0;``` pour qu'elle soit bien calée à droite qu'elle occupe 60% de la largeur du ```<body>```.
 Ajoutons-lui maintenant la propriété ```overflow: auto``` qui permet de faire défiler son contenu.
 
-#### Le ```<body>```
+#### Le ```**<body>**```
 
 Enfin, nous devons empêcher la "scrollbar" du body d'apparaitre, ce qui nous assure que la carte restera bien de marbre en toutes situations.
 
