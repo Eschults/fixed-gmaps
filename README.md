@@ -16,11 +16,8 @@ La vue correspondante doit contenir deux ```<div>``` :
 # la div correspondant à la carte
 <div class="box-shadow" id="map"></div>
 
-# ici le code js pour afficher la carte et les marqueurs
-
 # la div correspondant à la liste des flats que nous voulons faire défiler
 <div class="sidebar grey-bg">
-
   # Il s'agit ici du code correspondant à l'exemple, mais l'important
   # est de placer ici votre contenu à faire défiler
   <h1 class="padding-left-15">List of flats</h1>
@@ -37,6 +34,8 @@ La vue correspondante doit contenir deux ```<div>``` :
     </div>
   <% end %>
 </div>
+
+# ici le code js pour afficher la carte et les marqueurs
 ```
 
 ### Step 2 - CSS
