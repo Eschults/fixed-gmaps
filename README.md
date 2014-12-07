@@ -100,12 +100,12 @@ A l'étape précédente, nous avons empêché la srollbar du ```<body>``` d'appa
 
 Nous devons donc nous assurer que cette propriété ne sera appliquée qu'à la vue correspondante.
 
-C'est pourquoi nous avons créé un fichier à part dans ```app/assets/stylesheet```, que nous avons nommé ```map.css.scss``` pour y placer le code ci-dessus.
+C'est pourquoi nous avons créé un fichier à part dans ```app/assets/stylesheets```, que nous avons nommé ```map.css.scss``` pour y placer le code ci-dessus.
 
-Ajoutons donc dans la ```<head>``` de notre ```app/views/layout/application.html.erb``` le code suivant :
+Ajoutons donc dans la ```<head>``` de notre ```app/views/layouts/application.html.erb``` le code suivant :
 
 ```html
-# app/views/layout/application.html.erb
+# app/views/layouts/application.html.erb
 
 <head>
   # reste de la head
