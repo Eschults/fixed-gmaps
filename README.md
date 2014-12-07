@@ -47,7 +47,7 @@ Afin de fixer la carte, donnons-lui les propriétés css ci-dessous, à savoir :
 
 #### Le contenu : **div.sidebar**
 
-Pour que la sidebar soit correctement disposée, donnons-lui les propriétés complémentaires à celles de #map, soit une ```width: 60%;```, et ```right: 0;``` pour qu'elle soit bien calée à droite qu'elle occupe 60% de la largeur du ```<body>```.
+Pour que la sidebar soit correctement disposée, donnons-lui les propriétés complémentaires à celles de **#map**, soit une ```width: 60%;```, et ```right: 0;``` pour qu'elle soit bien calée à droite qu'elle occupe 60% de la largeur du ```<body>```.
 Ajoutons-lui maintenant la propriété ```overflow: auto``` qui permet de faire défiler son contenu.
 
 #### Le ```<body>```
@@ -98,11 +98,13 @@ A l'étape précédente, nous avons empêché la srollbar du ```body``` d'appara
 
 Nous devons donc nous assurer que cette propriété ne sera appliquée qu'à la vue correspondante.
 
-C'est pourquoi nous avons créé un fichier à part dans app/assets/stylesheet, que nous avons nommé map.css.scss.
+C'est pourquoi nous avons créé un fichier à part dans ```app/assets/stylesheet```, que nous avons nommé ```map.css.scss```.
 
 Ajoutons donc dans la ```<head>``` de notre ```app/views/layout/application.html.erb``` le code suivant :
 
 ```html
+# app/views/layout/application.html.erb
+
 <head>
   # reste de la head
   <%= yield :map_css %>
@@ -144,6 +146,8 @@ Maintenant, nous souhaitons dire à notre controller de flats de ne plus appeler
 Pour cela, rendez-vous dans votre controller ```app/controllers/flats_controller.rb```, et ajoutez le code suivant :
 
 ```ruby
+# app/controllers/flats_controller.rb
+
 class FlatsController < ApplicationController
   # vos before_action ou skip_before_action...
   layout 'map', only: [:index]
@@ -151,5 +155,10 @@ class FlatsController < ApplicationController
   # reste de votre code
 end
 ```
+
+### Sources
+
+- [Stack overflow](http://stackoverflow.com/questions/15147378/position-google-maps-with-sidebar-on-right-and-fixed-header-on-top)
+- [JS fiddle](http://jsfiddle.net/kuXYq/4/)
 
 Enjoy :)
