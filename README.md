@@ -151,7 +151,7 @@ class FlatsController < ApplicationController
 end
 ```
 
-Enfin, pour que cette layout soit chargée au lancement de l'application, rendez-vous dans votre fichier ```config/initializers/assets.rb``` et ajoutez-y :
+Enfin, pour que ```map.css.scss``` soit chargée au lancement de l'application, rendez-vous dans votre fichier ```config/initializers/assets.rb``` et ajoutez-y :
 
 ```ruby
 #config/initializers/assets.rb
