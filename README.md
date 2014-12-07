@@ -164,8 +164,31 @@ Rails.application.config.assets.precompile += %w( map.css )
 
 Maintenant que nous appelons une layout spécifique pour notre page d'index des flats, nous pouvons :
 
-- Retirer le ```<% yield :map_css %>``` de ```app/views/layouts/map.html.erb``` et le ```<% content_for :map_css do %> ... <% end %>``` de ```app/views/flats/index.html.erb``` ;
-- Ajouter dans la ```<head>``` de ```app/views/layouts/map.html.erb``` le ```<%= stylesheet_link_tag 'map' %>```.
+```html
+# app/views/layouts/application.html.erb
+
+<head>
+  # reste de la head
+
+  # Retirer la ligne ci-dessous
+  <%= yield :map_css %>
+
+  # La remplacer par :
+  <%= stylesheet_link_tag 'map' %>
+</head>
+```
+
+
+```html
+# app/views/flats/index.html.erb
+
+# Retirer les 3 lignes ci-dessous :
+<% content_for :map_css do %>
+  <%= stylesheet_link_tag 'map' %>
+<% end %>
+
+# reste de votre code
+```
 
 ### Sources
 
