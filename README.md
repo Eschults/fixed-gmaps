@@ -1,6 +1,7 @@
 ## Fixed map
 
 Pour obtenir une page avec une carte fixe et du contenu que l'on peut faire défiler, comme sur [cette page](http://airbnbflo.herokuapp.com/flats), suivez les étapes ci-dessous.
+
 Plaçons-nous (au hasard) dans le contexte d'une carte contenant des appartements à réserver.
 
 ### Step 1 - HTML
@@ -99,7 +100,7 @@ Nous devons donc nous assurer que cette propriété ne sera appliquée qu'à la 
 
 C'est pourquoi nous avons créé un fichier à part dans app/assets/stylesheet, que nous avons nommé map.css.scss.
 
-Ajoutons donc dans la ```<head>``` de notre app/views/layout/application.html.erb le code suivant :
+Ajoutons donc dans la ```<head>``` de notre ```app/views/layout/application.html.erb``` le code suivant :
 
 ```html
 <head>
@@ -108,7 +109,7 @@ Ajoutons donc dans la ```<head>``` de notre app/views/layout/application.html.er
 </head>
 ```
 
-Et dans notre vue app/views/flats/index.html.erb le code suivant :
+Et dans notre vue ```app/views/flats/index.html.erb``` le code suivant :
 
 ```html
 # app/views/flats/index.html.erb
@@ -128,19 +129,19 @@ Et dans notre vue app/views/flats/index.html.erb le code suivant :
 </div>
 ```
 
-Ainsi, les propriétés du fichier map.css.scss ne seront appliquées qu'à cette vue.
+Ainsi, les propriétés du fichier ```map.css.scss``` ne seront appliquées qu'à cette vue.
 
 #### Footer
 
 Enfin, si vous avez placé votre footer dans votre layout générale (ce qui est bien sûr la bonne pratique), vous pourriez vouloir vous en affranchir sur cette page spécifique, car il risque d'apparaitre un peu n'importe où maintenant que nous avons donné des ```position: absolute;``` à nos autres ```<div>```.
 
-Pour cela, nous allons créer une layout spécifique que nous allons appeler app/views/layouts/map.html.erb.
+Pour cela, nous allons créer une layout spécifique que nous allons appeler ```app/views/layouts/map.html.erb```.
 
 Cette layout n'est rien d'autre que notre layout générale, à laquelle nous retirons la ligne correspondant à l'appel du footer soit ```<%= render "layouts/footer" %>```.
 
-Maintenant, nous souhaitons dire à notre controller de flats de ne plus appeler la layout app/views/layouts/application.html.erb, mais la layout app/views/layouts/map.html.erb quand son action index est appelée.
+Maintenant, nous souhaitons dire à notre controller de flats de ne plus appeler la layout app/views/layouts/application.html.erb, mais la layout ```app/views/layouts/map.html.erb``` quand son action **index** est appelée.
 
-Pour cela, rendez-vous dans votre controller app/controllers/flats_controller.rb, et ajoutez le code suivant :
+Pour cela, rendez-vous dans votre controller ```app/controllers/flats_controller.rb```, et ajoutez le code suivant :
 
 ```ruby
 class FlatsController < ApplicationController
