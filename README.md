@@ -172,7 +172,7 @@ end
 
 #### Pour aller plus loin
 
-Maintenant que nous appelons une layout spécifique pour notre page d'index des flats, nous n'avons plus besoin du pattern `content_for` (bien utile pour des bouts de code spécifiques à des vues) car nous pouvons directemebt liée la feuille de style de la carte dans le layout `map.html.erb` que nous avons créé. Vous pouvez donc effectuer les modifications suivantes:
+Maintenant que nous appelons une layout spécifique pour notre page d'index des flats, nous n'avons plus besoin du pattern `content_for` (bien utile pour des bouts de code spécifiques à des vues) car nous pouvons directement lier la feuille de style de la carte dans le layout `map.html.erb` que nous avons créé. Vous pouvez donc effectuer les modifications suivantes:
 
 ```erb
 # app/views/layouts/map.html.erb
