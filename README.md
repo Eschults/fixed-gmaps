@@ -22,7 +22,7 @@ La vue correspondante doit contenir deux ```<div>``` :
 <div class="sidebar grey-bg">
 
   # Il s'agit ici du code correspondant à l'exemple, mais l'important
-  # est de placer votre contenu à défiler dans la div.sidebar
+  # est de placer ici votre contenu à faire défiler
   <h1 class="padding-left-15">List of flats</h1>
   <% @flats.each do |f| %>
     <div class="col-sm-12 col-md-6 index-flats">
