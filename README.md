@@ -165,7 +165,7 @@ Rails.application.config.assets.precompile += %w( map.css )
 Maintenant que nous appelons une layout spécifique pour notre page d'index des flats, nous pouvons :
 
 ```html
-# app/views/layouts/application.html.erb
+# app/views/layouts/map.html.erb
 
 <head>
   # reste de la head
