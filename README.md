@@ -97,11 +97,11 @@ html, body {
 
 #### Body scrollbar
 
-A l'étape précédente, nous avons empêché la srollbar du ```body``` d'apparaitre, ce qui peut s'avérer légèrement handicapant pour les autres pages de notre site.
+A l'étape précédente, nous avons empêché la srollbar du ```<body>``` d'apparaitre, ce qui peut s'avérer légèrement handicapant pour les autres pages de notre site.
 
 Nous devons donc nous assurer que cette propriété ne sera appliquée qu'à la vue correspondante.
 
-C'est pourquoi nous avons créé un fichier à part dans ```app/assets/stylesheet```, que nous avons nommé ```map.css.scss```.
+C'est pourquoi nous avons créé un fichier à part dans ```app/assets/stylesheet```, que nous avons nommé ```map.css.scss``` pour y placer le code ci-dessus.
 
 Ajoutons donc dans la ```<head>``` de notre ```app/views/layout/application.html.erb``` le code suivant :
 
@@ -135,7 +135,7 @@ Enfin, si vous avez placé votre footer dans votre layout générale (ce qui est
 
 Pour cela, nous allons créer une layout spécifique que nous allons appeler ```app/views/layouts/map.html.erb```.
 
-Cette layout n'est rien d'autre que notre layout générale (faites donc un bon copier-coller des familles de votre layout application vers la nouvelle layout map), à laquelle nous retirons la ligne correspondant à l'appel du footer soit ```<%= render "layouts/footer" %>```.
+Cette layout n'est rien d'autre que notre layout générale (faites donc un bon copier-coller des familles de votre layout application vers la nouvelle layout map), à laquelle nous retirons la ligne correspondant à l'appel du footer soit ```<%= render "layouts/footer" %>```. Nous pouvons aussi en profiter pour retirer de la layout générale le ```<% yield :map_css %>``` qui sera désormais inutile à cet endroit de notre code.
 
 Maintenant, nous souhaitons dire à notre controller de flats de ne plus appeler la layout app/views/layouts/application.html.erb, mais la layout ```app/views/layouts/map.html.erb``` quand son action **index** est appelée.
 
