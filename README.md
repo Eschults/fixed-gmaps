@@ -5,9 +5,9 @@ Plaçons-nous (au hasard) dans le contexte d'une carte contenant des appartement
 
 ### Step 1 - HTML
 
-La vue correspondante doit contenir deux ```<div>```:
-- la carte, donnons-lui l'id #map;
-- la liste des appartements, donnons-lui la class .sidebar.
+La vue correspondante doit contenir deux ```<div>``` :
+- la carte, donnons-lui l'id **#map**;
+- la liste des appartements, donnons-lui la class **.sidebar**.
 
 ```html
 # app/views/flats/index.html.erb
@@ -15,19 +15,7 @@ La vue correspondante doit contenir deux ```<div>```:
 # la div correspondant à la carte
 <div class="box-shadow" id="map"></div>
 
-# code js pour afficher la carte et les marqueurs
-<% content_for(:js) do %>
-  <%= javascript_tag do %>
-    $(document).on('ready', function() {
-      handler = Gmaps.build('Google');
-      handler.buildMap({ internal: { id: 'map' } }, function(){
-        markers = handler.addMarkers(<%= raw @markers.to_json %>);
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-      });
-    })
-  <% end %>
-<% end %>
+# ici le code js pour afficher la carte et les marqueurs (que j'ai supprimé pour plus de lisibilité)
 
 # la div correspondant à la liste des flats que nous voulons faire défiler
 <div class="sidebar grey-bg">
@@ -49,22 +37,26 @@ La vue correspondante doit contenir deux ```<div>```:
 
 ### Step 2 - CSS
 
-#### La carte - #map
+#### La carte : **div#map**
 
 Afin de fixer la carte, donnons-lui les propriétés css ci-dessous, à savoir :
 - une ```position: absolute;```, ```top: 50px;``` et ```bottom: 0;``` pour qu'elle soit fixée et qu'elle occupe la totalité de la hauteur de la page, bien disposée sous la navbar qui a une ```height: 50px;```,
 - ```left: 0;``` ```right: 40%;``` ```width: 40%;``` pour qu'elle soit calée à gauche et qu'elle prenne 40% de la largeur du ```<body>```,
 - ```z-index: 1;``` n'est pas indispensable, mais cette propriété permet de nous assurer que dans le cas où la "responsivité" du site n'est pas optimale et que des ```<div>``` seraient susceptibles de se superposer sur la carte, alors la carte resterait bien au premier plan.
 
-#### Le contenu - .sidebar
+#### Le contenu : **div.sidebar**
 
-Pour que la sidebar soit correctement disposée, donnons-lui les propriétés complémentaires à celles de #map, soit une ```width: 60%;```, et ```right: 0;```.
+Pour que la sidebar soit correctement disposée, donnons-lui les propriétés complémentaires à celles de #map, soit une ```width: 60%;```, et ```right: 0;``` pour qu'elle soit bien calée à droite qu'elle occupe 60% de la largeur du ```<body>```.
 Ajoutons-lui maintenant la propriété ```overflow: auto``` qui permet de faire défiler son contenu.
+
+#### Le ```<body>```
 
 Enfin, nous devons empêcher la "scrollbar" du body d'apparaitre, ce qui nous assure que la carte restera bien de marbre en toutes situations.
 
-Pour cela, nous ajoutons la propriété ```overflow: hidden```.
+Pour cela, nous lui ajoutons la propriété ```overflow: hidden```.
 Les autres propriétés appliquées au body ont pour but d'enlever marges et padding, pour occuper la totalité de la page.
+
+Le code est donc le suivant :
 
 ```css
 #app/assets/stylesheets/map.css.scss
@@ -97,3 +89,66 @@ html, body {
 }
 ```
 
+### Step 3 - Organisation des fichiers
+
+#### Body scrollbar
+
+A l'étape précédente, nous avons empêché la srollbar du ```body``` d'apparaitre, ce qui peut s'avérer légèrement handicapant pour les autres pages de notre site.
+
+Nous devons donc nous assurer que cette propriété ne sera appliquée qu'à la vue correspondante.
+
+C'est pourquoi nous avons créé un fichier à part dans app/assets/stylesheet, que nous avons nommé map.css.scss.
+
+Ajoutons donc dans la ```<head>``` de notre app/views/layout/application.html.erb le code suivant :
+
+```html
+<head>
+  # reste de la head
+  <%= yield :map_css %>
+</head>
+```
+
+Et dans notre vue app/views/flats/index.html.erb le code suivant :
+
+```html
+# app/views/flats/index.html.erb
+
+<% content_for :map_css do %>
+  <%= stylesheet_link_tag 'map' %>
+<% end %>
+
+# la div correspondant à la carte
+<div class="box-shadow" id="map"></div>
+
+# ici le code js pour afficher la carte et les marqueurs (que j'ai supprimé pour plus de lisibilité)
+
+# la div correspondant à la liste des flats que nous voulons faire défiler
+<div class="sidebar grey-bg">
+  ...
+</div>
+```
+
+Ainsi, les propriétés du fichier map.css.scss ne seront appliquées qu'à cette vue.
+
+#### Footer
+
+Enfin, si vous avez placé votre footer dans votre layout générale (ce qui est bien sûr la bonne pratique), vous pourriez vouloir vous en affranchir sur cette page spécifique, car il risque d'apparaitre un peu n'importe où maintenant que nous avons donné des ```position: absolute;``` à nos autres ```<div>```.
+
+Pour cela, nous allons créer une layout spécifique que nous allons appeler app/views/layouts/map.html.erb.
+
+Cette layout n'est rien d'autre que notre layout générale, à laquelle nous retirons la ligne correspondant à l'appel du footer soit ```<%= render "layouts/footer" %>```.
+
+Maintenant, nous souhaitons dire à notre controller de flats de ne plus appeler la layout app/views/layouts/application.html.erb, mais la layout app/views/layouts/map.html.erb quand son action index est appelée.
+
+Pour cela, rendez-vous dans votre controller app/controllers/flats_controller.rb, et ajoutez le code suivant :
+
+```ruby
+class FlatsController < ApplicationController
+  # vos before_action ou skip_before_action...
+  layout 'map', only: [:index]
+
+  # reste de votre code
+end
+```
+
+Enjoy :)
