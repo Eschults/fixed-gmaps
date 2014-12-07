@@ -96,7 +96,7 @@ html, body {
 
 #### Body scrollbar
 
-A l'étape précédente, nous avons empêché la srollbar du ```<body>``` d'apparaitre, ce qui peut s'avérer légèrement handicapant pour les autres pages de notre site.
+A l'étape précédente, nous avons empêché la scrollbar du ```<body>``` d'apparaitre, ce qui peut s'avérer légèrement handicapant pour les autres pages de notre site.
 
 Nous devons donc nous assurer que cette propriété ne sera appliquée qu'à la vue correspondante.
 
