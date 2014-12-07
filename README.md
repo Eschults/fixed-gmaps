@@ -33,7 +33,7 @@ La vue correspondante doit contenir deux ```<div>``` :
   <% end %>
 </div>
 
-# ici le code js pour afficher la carte et les marqueurs
+<!-- ici le code js pour afficher la carte et les marqueurs -->
 ```
 
 ### Step 2 - CSS
