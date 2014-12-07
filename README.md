@@ -44,17 +44,17 @@ La vue correspondante doit contenir deux ```<div>``` :
 
 Afin de fixer la carte, donnons-lui les propriétés css ci-dessous, à savoir :
 - une ```position: absolute;```, ```top: 50px;``` et ```bottom: 0;``` pour qu'elle soit fixée et qu'elle occupe la totalité de la hauteur de la page, bien disposée sous la navbar qui a une ```height: 50px;```,
-- ```left: 0;``` ```right: 40%;``` ```width: 40%;``` pour qu'elle soit calée à gauche et qu'elle prenne 40% de la largeur du ```<body>```,
+- ```left: 0;``` ```right: 40%;``` ```width: 40%;``` pour qu'elle soit calée **à gauche** et qu'elle prenne **40%** de la largeur du ```<body>```,
 - ```z-index: 1;``` n'est pas indispensable, mais cette propriété permet de nous assurer que dans le cas où la "responsivité" du site n'est pas optimale et que des ```<div>``` seraient susceptibles de se superposer sur la carte, alors la carte resterait bien au premier plan.
 
 #### Le contenu : **div.sidebar**
 
-Pour que la sidebar soit correctement disposée, donnons-lui les propriétés complémentaires à celles de **#map**, soit une ```width: 60%;```, et ```right: 0;``` pour qu'elle soit bien calée à droite qu'elle occupe 60% de la largeur du ```<body>```.
-Ajoutons-lui maintenant la propriété ```overflow: auto``` qui permet de faire défiler son contenu.
+Pour que la sidebar soit correctement disposée, donnons-lui les propriétés complémentaires à celles de **#map**, soit une ```width: 60%;```, et ```right: 0;``` pour qu'elle soit bien calée **à droite** qu'elle occupe **60%** de la largeur du ```<body>```.
+Ajoutons-lui maintenant la propriété ```overflow: auto``` qui permet d'ajouter une scrollbar à la div pour pouvoir faire défiler son contenu.
 
 #### Le **```<body>```**
 
-Enfin, nous devons empêcher la "scrollbar" du body d'apparaitre, ce qui nous assure que la carte restera bien de marbre en toutes situations.
+Enfin, nous devons empêcher la "scrollbar" du body d'apparaitre, ce qui nous assure que la carte restera bien de marbre en toutes circonstances.
 
 Pour cela, nous lui ajoutons la propriété ```overflow: hidden```.
 Les autres propriétés appliquées au ```<body>``` ont pour but d'enlever marges et padding, pour occuper la totalité de la page.
@@ -138,7 +138,7 @@ Cette layout n'est rien d'autre que notre layout générale (faites donc un bon 
 
 Maintenant, nous souhaitons dire à notre controller de flats de ne plus appeler la layout app/views/layouts/application.html.erb, mais la layout ```app/views/layouts/map.html.erb``` quand son action **index** est appelée.
 
-Pour cela, rendez-vous dans votre controller ```app/controllers/flats_controller.rb```, et ajoutez le code suivant :
+Pour cela, rendez-vous dans votre controller ```app/controllers/flats_controller.rb```, et ajoutez-y le code suivant :
 
 ```ruby
 # app/controllers/flats_controller.rb
