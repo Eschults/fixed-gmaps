@@ -16,10 +16,13 @@ La vue correspondante doit contenir deux ```<div>``` :
 # la div correspondant à la carte
 <div class="box-shadow" id="map"></div>
 
-# ici le code js pour afficher la carte et les marqueurs (que j'ai supprimé pour plus de lisibilité)
+# ici le code js pour afficher la carte et les marqueurs
 
 # la div correspondant à la liste des flats que nous voulons faire défiler
 <div class="sidebar grey-bg">
+
+  # Il s'agit ici du code correspondant à l'exemple, mais l'important
+  # est de placer votre contenu à défiler dans la div.sidebar
   <h1 class="padding-left-15">List of flats</h1>
   <% @flats.each do |f| %>
     <div class="col-sm-12 col-md-6 index-flats">
@@ -120,15 +123,8 @@ Et dans notre vue ```app/views/flats/index.html.erb``` le code suivant :
   <%= stylesheet_link_tag 'map' %>
 <% end %>
 
-# la div correspondant à la carte
-<div class="box-shadow" id="map"></div>
+# reste de votre code
 
-# ici le code js pour afficher la carte et les marqueurs (que j'ai supprimé pour plus de lisibilité)
-
-# la div correspondant à la liste des flats que nous voulons faire défiler
-<div class="sidebar grey-bg">
-  ...
-</div>
 ```
 
 Ainsi, les propriétés du fichier ```map.css.scss``` ne seront appliquées qu'à cette vue.
@@ -139,7 +135,7 @@ Enfin, si vous avez placé votre footer dans votre layout générale (ce qui est
 
 Pour cela, nous allons créer une layout spécifique que nous allons appeler ```app/views/layouts/map.html.erb```.
 
-Cette layout n'est rien d'autre que notre layout générale, à laquelle nous retirons la ligne correspondant à l'appel du footer soit ```<%= render "layouts/footer" %>```.
+Cette layout n'est rien d'autre que notre layout générale (faites donc un bon copier-coller des familles de votre layout application vers la nouvelle layout map), à laquelle nous retirons la ligne correspondant à l'appel du footer soit ```<%= render "layouts/footer" %>```.
 
 Maintenant, nous souhaitons dire à notre controller de flats de ne plus appeler la layout app/views/layouts/application.html.erb, mais la layout ```app/views/layouts/map.html.erb``` quand son action **index** est appelée.
 
